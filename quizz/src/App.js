@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import QuestionCard from "./components/QuestionCard";
-import { API } from "./API";
+import { API } from "./components/API";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -16,12 +16,15 @@ const App = () => {
 
   const startGame = async () => {
     setIsGameRunning(true);
+    setNumberOfQuestion(0);
     setLoading(true);
     const newQuiz = await API(NUMBER, "easy");
     setQuiz(newQuiz);
     setLoading(false);
-    console.log(quiz, "state");
-    console.log(newQuiz, "const");
+  };
+
+  const nextQuestion = () => {
+    setNumberOfQuestion((prevState) => prevState + 1);
   };
 
   return (
@@ -34,8 +37,9 @@ const App = () => {
           NUMBER={NUMBER}
           numberOfQuestion={numberOfQuestion}
           question={quiz[numberOfQuestion].question}
-          multipleChoice={multipleChoice}
+          multipleChoice={quiz[numberOfQuestion].allAnswers}
           isGameRunning={isGameRunning}
+          nextQuestion={nextQuestion}
         />
       ) : null}
     </div>

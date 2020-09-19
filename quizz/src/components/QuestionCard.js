@@ -6,14 +6,11 @@ const QuestionCard = ({
   question,
   multipleChoice,
   isGameRunning,
+  nextQuestion,
 }) => {
-  // const quizQuestion = quiz.map((question) => {
-  //   return (
-  //     <div>
-  //       <p>{question[numberOfQuestion].question}</p>
-  //     </div>
-  //   );
-  // });
+  const quizQuestion = multipleChoice.map((question) => {
+    return <button key={Math.random()}>{question}</button>;
+  });
   return (
     <div>
       <p>Score:</p>
@@ -21,10 +18,14 @@ const QuestionCard = ({
         question number {numberOfQuestion + 1}/{NUMBER}
       </p>
       <p>{question}</p>
-      {/* {isGameRunning ? <p>{quiz[numberOfQuestion]}</p> : null} */}
-      <button>multiple chice</button>
+
+      {quizQuestion}
       <br />
-      <button>next Question</button>
+      {NUMBER === numberOfQuestion + 1 ? (
+        "Last Question"
+      ) : (
+        <button onClick={nextQuestion}>next Question</button>
+      )}
     </div>
   );
 };
