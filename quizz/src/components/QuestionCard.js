@@ -22,7 +22,7 @@ const QuestionCard = ({
       {quizQuestion}
       <br />
       {NUMBER === numberOfQuestion + 1 ? (
-        "Last Question"
+        <button onClick={nextQuestion}>Submit</button>
       ) : (
         <button onClick={nextQuestion}>next Question</button>
       )}

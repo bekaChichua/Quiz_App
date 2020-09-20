@@ -8,7 +8,7 @@ const App = () => {
   const [numberOfQuestion, setNumberOfQuestion] = useState(0);
   const [difficulty, setDifficulty] = useState("");
   const [isGameRunning, setIsGameRunning] = useState(false);
-  const [multipleChoice, setMultipleChoice] = useState([]);
+  const [userAnswer, setUserAnswer] = useState("");
   // const [question, setQuestion] = useState("");
   const NUMBER = 10;
   // console.log(myData);
@@ -25,7 +25,12 @@ const App = () => {
 
   const nextQuestion = () => {
     setNumberOfQuestion((prevState) => prevState + 1);
+    NUMBER === numberOfQuestion + 1 && setIsGameRunning(false);
   };
+
+  // const handleUserAnswer = {
+  //   setUserAnswer()
+  // };
 
   return (
     <div>
